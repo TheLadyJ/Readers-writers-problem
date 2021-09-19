@@ -34,7 +34,7 @@ void lightswitch_unlock(Lightswitch *lsw, sem_t *semaphore){
 }
 //**********************************
 
-//Korisæene promenljive
+//Koriscene promenljive
 Lightswitch readSwitch;
 sem_t roomEmpty;
 sem_t turnstile;
@@ -50,7 +50,7 @@ void *writer_thread(void *serialNum){
 
     sleep(randomTime);
     
-    //Kritièan deo za pisce
+    //KritiÃ¨an deo za pisce
     printf("\nWriter %d - New value of shared variable is:", *((int*)serialNum));
     scanf("%d",&sharedVariable);
     
@@ -58,7 +58,7 @@ void *writer_thread(void *serialNum){
     sem_post(&roomEmpty);
 }
 
-//Nit èitaoca
+//Nit citaoca
 void*reader_therad(void *serialNum){
     int randomTime = rand() %3;
     
@@ -69,7 +69,7 @@ void*reader_therad(void *serialNum){
     
     lightswitch_lock(&readSwitch,&roomEmpty);
     
-    //Kritièan deo za èitaoce
+    //Kritican deo za citaoce
     printf("\nReader %d - Read value is %d\n",*((int*)serialNum),sharedVariable);
     
     lightswitch_unlock(&readSwitch,&roomEmpty);
