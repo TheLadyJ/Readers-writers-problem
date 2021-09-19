@@ -50,7 +50,7 @@ void *writer_thread(void *serialNum){
 
     sleep(randomTime);
     
-    //Kritièan deo za pisce
+    //Kritican deo za pisce
     printf("\nWriter %d - New value of shared variable is:", *((int*)serialNum));
     scanf("%d",&sharedVariable);
     
